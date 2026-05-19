@@ -1,4 +1,4 @@
-const AIRTABLE_ENDPOINT = "https://api.airtable.com/v0/appYs7BLYuN6JQsH/Subscribers";
+const AIRTABLE_ENDPOINT = "https://api.airtable.com/v0/apppYs7BLYuN6JQsH/Subscribers";
 
 function setCorsHeaders(response) {
   response.setHeader("Access-Control-Allow-Origin", "*");
