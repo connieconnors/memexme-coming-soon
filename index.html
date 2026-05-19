@@ -155,6 +155,23 @@
         font-size: 0.9rem;
       }
 
+      .thank-you {
+        max-width: 36rem;
+        margin: 2.6rem auto 0;
+        padding: clamp(1.4rem, 4vw, 2rem);
+        border: 1px solid rgba(74, 45, 78, 0.14);
+        border-radius: 1.5rem;
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.48);
+        box-shadow: 0 1.5rem 5rem rgba(74, 45, 78, 0.08);
+      }
+
+      .thank-you p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
       .print-note {
         margin: 1.35rem 0 0;
         color: var(--muted);
@@ -226,8 +243,7 @@
     </main>
 
     <script>
-      const AIRTABLE_ENDPOINT = "https://api.airtable.com/v0/YOUR_BASE_ID/YOUR_TABLE_NAME";
-      const AIRTABLE_TOKEN = "YOUR_AIRTABLE_PERSONAL_ACCESS_TOKEN";
+      const SUBSCRIBE_ENDPOINT = "/api/subscribe";
 
       const form = document.querySelector("#signup-form");
       const statusMessage = document.querySelector("#form-status");
@@ -242,30 +258,34 @@
         statusMessage.textContent = "Submitting...";
 
         try {
-          const response = await fetch(AIRTABLE_ENDPOINT, {
+          const response = await fetch(SUBSCRIBE_ENDPOINT, {
             method: "POST",
             headers: {
-              Authorization: `Bearer ${AIRTABLE_TOKEN}`,
               "Content-Type": "application/json"
             },
             body: JSON.stringify({
-              fields: {
-                Name: formData.get("name"),
-                Email: formData.get("email")
-              }
+              name: formData.get("name"),
+              email: formData.get("email")
             })
           });
 
           if (!response.ok) {
-            throw new Error("Airtable request failed");
+            throw new Error("Subscription request failed");
           }
 
-          form.reset();
-          statusMessage.textContent = "Thank you. You are on the list.";
+          const thankYou = document.createElement("div");
+          thankYou.className = "thank-you";
+          thankYou.setAttribute("role", "status");
+          thankYou.setAttribute("aria-live", "polite");
+          thankYou.innerHTML = "<p>Thank you. You are on the list.</p>";
+          form.replaceWith(thankYou);
         } catch {
-          statusMessage.textContent = "Something went wrong. Please try again.";
-        } finally {
+          statusMessage.textContent = "Sorry, we could not add you just now. Please try again in a moment.";
           submitButton.disabled = false;
+        } finally {
+          if (form.isConnected) {
+            submitButton.disabled = false;
+          }
         }
       });
     </script>
