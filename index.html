@@ -5,64 +5,269 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="MemexMe is coming soon. Join the early access list for updates."
+      content="MemexMe is a new kind of memory platform built around the things you've kept, collected, and carried."
     >
     <title>MemexMe | Coming Soon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css">
+    <style>
+      :root {
+        --background: #faf7f2;
+        --accent: #4a2d4e;
+        --accent-soft: rgba(74, 45, 78, 0.1);
+        --text: #2d2530;
+        --muted: #736673;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Inter", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 20% 15%, rgba(74, 45, 78, 0.08), transparent 24rem),
+          var(--background);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        padding: clamp(2rem, 6vw, 5rem) 1.25rem;
+      }
+
+      .hero {
+        width: min(100%, 43rem);
+        text-align: center;
+      }
+
+      .kicker {
+        margin: 0 0 1.35rem;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--accent);
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(3.5rem, 11vw, 7rem);
+        font-weight: 600;
+        line-height: 0.9;
+        letter-spacing: -0.045em;
+      }
+
+      .subhead {
+        max-width: 38rem;
+        margin: 1.45rem auto 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+        line-height: 1.7;
+      }
+
+      .signup {
+        display: grid;
+        gap: 0.95rem;
+        max-width: 36rem;
+        margin: 2.6rem auto 0;
+        padding: clamp(1rem, 3vw, 1.35rem);
+        border: 1px solid rgba(74, 45, 78, 0.14);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.48);
+        box-shadow: 0 1.5rem 5rem rgba(74, 45, 78, 0.08);
+      }
+
+      .form-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.4rem;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-align: left;
+        text-transform: uppercase;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid rgba(74, 45, 78, 0.18);
+        border-radius: 999px;
+        padding: 0.95rem 1rem;
+        color: var(--text);
+        background: var(--white);
+        outline: none;
+      }
+
+      input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 0.25rem var(--accent-soft);
+      }
+
+      button {
+        width: 100%;
+        border: 0;
+        border-radius: 999px;
+        padding: 1rem 1.2rem;
+        color: var(--white);
+        background: var(--accent);
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 180ms ease, opacity 180ms ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.7;
+        transform: none;
+      }
+
+      .status {
+        min-height: 1.4rem;
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .print-note {
+        margin: 1.35rem 0 0;
+        color: var(--muted);
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.08rem;
+        font-style: italic;
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          text-align: left;
+        }
+
+        .subhead,
+        .signup {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        .form-fields {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main class="shell">
+    <main class="page">
       <section class="hero" aria-labelledby="page-title">
-        <p class="eyebrow">Coming soon</p>
-        <h1 id="page-title">Your memory, ideas, and notes, connected.</h1>
-        <p class="lede">
-          MemexMe is a personal knowledge space designed to help you capture
-          what matters, find it again, and build on it over time.
+        <p class="kicker">MemexMe.com is coming soon</p>
+        <h1 id="page-title">Your objects remember more than you do.</h1>
+        <p class="subhead">
+          MemexMe is a new kind of memory platform &mdash; built around the
+          things you've kept, collected, and carried.
         </p>
 
         <form class="signup" id="signup-form">
-          <label for="email">Get launch updates</label>
-          <div class="signup-row">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder="you@example.com"
-              required
-            >
-            <button type="submit">Notify me</button>
+          <div class="form-fields">
+            <label for="name">
+              Name
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="Your name"
+                required
+              >
+            </label>
+            <label for="email">
+              Email
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+            </label>
           </div>
-          <p class="form-note" id="form-note" aria-live="polite">
-            No spam. Just occasional progress notes.
-          </p>
+          <button type="submit">Submit</button>
+          <p class="status" id="form-status" aria-live="polite"></p>
         </form>
-      </section>
 
-      <aside class="preview" aria-label="Product highlights">
-        <div class="card card-large">
-          <span class="card-label">Capture</span>
-          <strong>Save the thought before it disappears.</strong>
-        </div>
-        <div class="card-grid">
-          <div class="card">
-            <span class="card-label">Connect</span>
-            <strong>See related ideas surface naturally.</strong>
-          </div>
-          <div class="card">
-            <span class="card-label">Recall</span>
-            <strong>Find the thread when you need it.</strong>
-          </div>
-        </div>
-      </aside>
+        <p class="print-note">
+          Also coming: MyTroveBook &mdash; for the stories worth printing.
+        </p>
+      </section>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+      const AIRTABLE_ENDPOINT = "https://api.airtable.com/v0/YOUR_BASE_ID/YOUR_TABLE_NAME";
+      const AIRTABLE_TOKEN = "YOUR_AIRTABLE_PERSONAL_ACCESS_TOKEN";
+
+      const form = document.querySelector("#signup-form");
+      const statusMessage = document.querySelector("#form-status");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const submitButton = form.querySelector("button");
+        const formData = new FormData(form);
+
+        submitButton.disabled = true;
+        statusMessage.textContent = "Submitting...";
+
+        try {
+          const response = await fetch(AIRTABLE_ENDPOINT, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${AIRTABLE_TOKEN}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              fields: {
+                Name: formData.get("name"),
+                Email: formData.get("email")
+              }
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error("Airtable request failed");
+          }
+
+          form.reset();
+          statusMessage.textContent = "Thank you. You are on the list.";
+        } catch {
+          statusMessage.textContent = "Something went wrong. Please try again.";
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    </script>
   </body>
 </html>
