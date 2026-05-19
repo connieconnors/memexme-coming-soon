@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="MemexMe is coming soon. Join the early access list for updates."
+    >
+    <title>MemexMe | Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Coming soon</p>
+        <h1 id="page-title">Your memory, ideas, and notes, connected.</h1>
+        <p class="lede">
+          MemexMe is a personal knowledge space designed to help you capture
+          what matters, find it again, and build on it over time.
+        </p>
+
+        <form class="signup" id="signup-form">
+          <label for="email">Get launch updates</label>
+          <div class="signup-row">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+              required
+            >
+            <button type="submit">Notify me</button>
+          </div>
+          <p class="form-note" id="form-note" aria-live="polite">
+            No spam. Just occasional progress notes.
+          </p>
+        </form>
+      </section>
+
+      <aside class="preview" aria-label="Product highlights">
+        <div class="card card-large">
+          <span class="card-label">Capture</span>
+          <strong>Save the thought before it disappears.</strong>
+        </div>
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-label">Connect</span>
+            <strong>See related ideas surface naturally.</strong>
+          </div>
+          <div class="card">
+            <span class="card-label">Recall</span>
+            <strong>Find the thread when you need it.</strong>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
