@@ -1,8 +1,12 @@
 const AIRTABLE_ENDPOINT = "https://api.airtable.com/v0/appYs7BLYuN6JQsH/Subscribers";
 
 module.exports = async function handler(request, response) {
+  if (request.method === "OPTIONS") {
+    return response.status(204).end();
+  }
+
   if (request.method !== "POST") {
-    response.setHeader("Allow", "POST");
+    response.setHeader("Allow", "POST, OPTIONS");
     return response.status(405).json({ error: "Method not allowed" });
   }
 
